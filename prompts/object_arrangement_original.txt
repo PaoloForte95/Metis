@@ -1,0 +1,116 @@
+I want you to solve a planning problem for rearranging objects.
+
+You need to: 
+
+-Place the food on a plate or in a container.
+
+-Remove the objects from the table that are not listed to be in the table.
+
+Objects that are allowed on a table: 
+
+-Cutlery
+
+-Bowls
+
+-Plates
+
+-Fruits
+
+-Mugs
+
+-Cups
+
+-Baskets
+
+-Glass
+
+
+- Generate a start and goal waypoint for each object on the table, but not the food. Call wp1s, wp2s, etc.. the start and wp1f, wp2f,etc the goal waypoints.|
+
+- Each food is defined as food type; baskets and plate as container; the others as locatable
+
+
+
+An example of planning problem definition is:
+
+(define (problem object_arrangement)
+
+    (:domain object_arrangement)
+
+    (:objects
+
+        plate - container
+
+        pear - food
+
+        fork - locatable
+
+        glass - locatable
+
+        mug - locatable
+
+        screwdriver - locatable
+
+        robot - robot
+
+        wp1s wp2s wp3s wp4s wp5s wp6s - location
+
+        wp1f wp2f wp3f wp4f wp5f - location
+
+        out_location - location 
+
+        home1 - location
+
+    )
+
+    (:init
+
+        (at plate wp1s)
+
+        (at pear wp2s)
+
+        (at glass wp3s)
+
+        (at mug wp4s)
+
+        (at screwdriver wp5s)
+
+        (at fork wp6f)
+
+        (at robot1 home)
+
+        (free robot1)
+
+      
+
+    )
+
+    (:goal
+
+        (and
+
+        (at plate wp1f)
+
+        (on pear plate)
+
+        (at glass wp3f)
+
+        (at mug wp4f)
+
+        (at screwdriver out_location)
+
+        )
+
+    )
+
+)
+Your task is :
+
+1. Generate the planning problem definition in PDDL format based on the provided image and the objects detected in the image (for the initial state) and user input in form of natural language (for the goal state).
+
+
+Just generate the file and do not put any explanation.
+
+In this problem you have:
+
+- pear: 1

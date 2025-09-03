@@ -1,0 +1,2346 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://purl.org/ai4s/ontology/planning"
+         xmlns="https://purl.org/ai4s/ontology/planning#"
+         xmlns:term="http://purl.org/dc/terms/">
+
+<owl:Ontology rdf:about="https://purl.org/ai4s/ontology/planning">
+  <owl:versionIRI rdf:resource="https://purl.org/ai4s/ontology/planning/v2.0"/>
+  <term:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bharath Muppasani, Vishal Pallagani, Biplav Srivastava, Raghava Mutharaju</term:contributor>
+  <term:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bharath Muppasani</term:creator>
+  <term:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology represents the knowledge about automated planning domain. It captures the characteristics, features, and performance of different planners and domains, as well as the relationships between them. The ontology can be used to select suitable planners for a given domain and to improve their performance. The ontology aims to facilitate automated planning research and applications.</term:description>
+  <term:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</term:language>
+  <term:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://creativecommons.org/licenses/by/4.0/legalcode</term:license>
+  <term:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontology to model Automated Planning domain</term:title>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://github.com/BharathMuppasani/AI-Planning-Ontology</rdfs:seeAlso>
+  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</owl:versionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#addsPredicate">
+  <rdfs:domain rdf:resource="#ActionEffect"/>
+  <rdfs:range rdf:resource="#State"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an effect to a state that adds a predicate to it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#assignsFluent"/>
+
+<owl:ObjectProperty rdf:about="#belongsToAction">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provenance property to mark which domain the individuals belong to</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#belongsToDomain">
+  <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:range rdf:resource="#PlanningDomain"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provenance function to mark which domain the individuals belong to</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#deletesPredicate">
+  <rdfs:domain rdf:resource="#ActionEffect"/>
+  <rdfs:range rdf:resource="#State"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an effect to a state that deletes a predicate from it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAction">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainAction"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain action that is available in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasArgument">
+  <rdfs:domain rdf:resource="#FormulaNode"/>
+  <rdfs:range rdf:resource="#FormulaNode"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasConstant">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainConstant"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain constant that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateName">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateParameter">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateType">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasEffect">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionEffect"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action effect that results from it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasExtractedAction">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#MacroAction"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to an action that is extracted from its plan</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasGoalState">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#GoalState"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a goal state that is desired for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasHighRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a high relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasInitialState">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#InitialState"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to an initial state that is given for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLowRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a low relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMediumRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a medium relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasObject">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#ProblemObject"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a problem object that is involved in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasParameter">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionParameter"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action parameter that is involved in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasParameterType"/>
+
+<owl:ObjectProperty rdf:about="#hasPlan">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#Plan"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a plan that solves it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPrecondition">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionPrecondition"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action precondition that is required for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPredicate">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainPredicate"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain predicate that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasProblem">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#PlanningProblem"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planning problem that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRequirement">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainRequirement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain or problem to a domain requirement that is required or supported by it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRootNode">
+  <rdfs:range rdf:resource="#FormulaNode"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTag">
+  <rdfs:domain rdf:resource="#Type"/>
+  <rdfs:range rdf:resource="#TypeTag"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a type to a type tag that labels it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasType">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Type"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a type</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTypeInstance">
+  <rdfs:domain rdf:resource="#Type"/>
+  <rdfs:range rdf:resource="#ProblemObject"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a type to a problem object that is an instance of it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isGeneratedBy">
+  <rdfs:domain rdf:resource="#Plan"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a plan to a planner that generates it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofPlannerType">
+  <rdfs:domain rdf:resource="#Planner"/>
+  <rdfs:range rdf:resource="#PlannerType"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planner to a planner type that categorizes it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofType">
+  <rdfs:domain rdf:resource="#ActionParameter"/>
+  <rdfs:range rdf:resource="#Type"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action parameter to a type that classifies it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#refersToPredicate">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#solvedBy">
+  <owl:inverseOf rdf:resource="#solvesRequirement"/>
+  <rdfs:domain rdf:resource="#DomainRequirement"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a domain requirement to a planner that solves it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#solvesRequirement">
+  <rdfs:domain rdf:resource="#Planner"/>
+  <rdfs:range rdf:resource="#DomainRequirement"/>
+  <rdfs:comment xml:lang="en">a property that relates a planner to a domain requirement that it can handle or satisfy</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#assignsValue">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Holds the value assignment of an effect</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasArgumentIndex">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasGeneralDomainDescription"/>
+
+<owl:DatatypeProperty rdf:about="#hasPlanCost">
+  <rdfs:domain rdf:resource="#Plan"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPredicateParameterIndex">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSuccessfullTaskDescription">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSyntax"/>
+
+<owl:DatatypeProperty rdf:about="#hasTaskDescription"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+
+<owl:AnnotationProperty rdf:about="#Authors"/>
+
+<owl:Class rdf:about="#ActionEffect">
+  <rdfs:comment xml:lang="en">a class that represents what happens after an action is done</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#State">
+  <rdfs:comment xml:lang="en">represents a situation or a configuration of the world in a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanningDomain">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAction"/>
+      <owl:someValuesFrom rdf:resource="#DomainAction"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasPredicate"/>
+      <owl:someValuesFrom rdf:resource="#DomainPredicate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRequirement"/>
+      <owl:someValuesFrom rdf:resource="#DomainRequirement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a class that represents a problem setting for automated planning</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainAction">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasEffect"/>
+      <owl:someValuesFrom rdf:resource="#ActionEffect"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a class that represents a type of action that can be performed in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#FormulaNode">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abstract class, not instantiated directly</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainConstant">
+  <rdfs:comment xml:lang="en">represents a fixed entity in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MacroAction">
+  <rdfs:subClassOf rdf:resource="#DomainAction"/>
+  <rdfs:comment xml:lang="en">Extracted macro action, which is a combination of multiple actions of a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanningProblem">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasGoalState"/>
+      <owl:someValuesFrom rdf:resource="#GoalState"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasInitialState"/>
+      <owl:someValuesFrom rdf:resource="#InitialState"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasObject"/>
+      <owl:someValuesFrom rdf:resource="#ProblemObject"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">represents a task of the planning domain that requires a plan to be solved</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#GoalState">
+  <rdfs:subClassOf rdf:resource="#State"/>
+  <rdfs:comment xml:lang="en">represents a desired or a target state defined in a task that a plan should achieve</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Planner">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#ofPlannerType"/>
+      <owl:someValuesFrom rdf:resource="#PlannerType"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#solvesRequirement"/>
+      <owl:someValuesFrom rdf:resource="#DomainRequirement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a system that can generate plans for a given planning domain and problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#InitialState">
+  <rdfs:subClassOf rdf:resource="#State"/>
+  <rdfs:comment xml:lang="en">represents the starting or the given state of a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ProblemObject">
+  <rdfs:comment xml:lang="en">represents an entity or a constant that is involved in a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionParameter">
+  <rdfs:comment xml:lang="en">a class that represents what is involved in an action</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Plan">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasPlanCost"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionPrecondition">
+  <rdfs:comment xml:lang="en">a class that represents what needs to be true before an action can be done</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicate">
+  <rdfs:comment xml:lang="en">a class that represents a condition or a fact that can be true or false in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainRequirement">
+  <rdfs:comment xml:lang="en">A feature that a planning domain requires or supports</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Type">
+  <rdfs:subClassOf rdf:resource="#TypeTag"/>
+  <rdfs:comment xml:lang="en">represents a kind of entity in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TypeTag">
+  <rdfs:comment xml:lang="en">represents a label that can be assigned to a type in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlannerType">
+  <rdfs:comment xml:lang="en">a category or classification of planners based on their characteristics or features</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#And">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LogicalConnective">
+  <rdfs:subClassOf rdf:resource="#FormulaNode"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The class represents logical connectives like 'and', 'or' and 'not'.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AssignmentEffect"/>
+
+<owl:Class rdf:about="#AtomicFormula">
+  <rdfs:subClassOf rdf:resource="#FormulaNode"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents a single predicate applied to terms</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicateParameter">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Used as a helper - a parameter to a domain predicate</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicateType">
+  <rdfs:subClassOf rdf:resource="#TypeTag"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Not">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Or">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#object">
+  <rdfs:subClassOf rdf:resource="#Type"/>
+</owl:Class>
+
+<owl:Class rdf:about="#block">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#robot">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#location">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#cutlery">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#container">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#plate">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#food">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#glass">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#mug">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#screwdriver">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#bowl">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#fruit">
+  <rdfs:subClassOf rdf:resource="#food"/>
+</owl:Class>
+
+<owl:Class rdf:about="#tool">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#cup">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:Class rdf:about="#basket">
+  <rdfs:subClassOf rdf:resource="#object"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#blocksworld">
+  <rdf:type rdf:resource="#PlanningDomain"/>
+  <hasRequirement rdf:resource="#strips"/>
+  <hasPredicate rdf:resource="#blocksworld_on_dfa21d84"/>
+  <hasPredicate rdf:resource="#blocksworld_ontable_80481c70"/>
+  <hasPredicate rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasPredicate rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasPredicate rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasPredicate rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasAction rdf:resource="#blocksworld_pick-up_2d32a2b7"/>
+  <hasAction rdf:resource="#blocksworld_put-down_6cedce07"/>
+  <hasAction rdf:resource="#blocksworld_stack_247123d9"/>
+  <hasAction rdf:resource="#blocksworld_unstack_49d9faf3"/>
+  <hasGeneralDomainDescription xml:lang="en">Put blocks on top of each other given a specification</hasGeneralDomainDescription>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#strips">
+  <rdf:type rdf:resource="#DomainRequirement"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_on_dfa21d84">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_206b9b5b"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_y_e07bf83a"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool on[x=block, y=block]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bool">
+  <rdf:type rdf:resource="#DomainPredicateType"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_206b9b5b">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_y_e07bf83a">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_ontable_80481c70">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_489a2fe4"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool ontable[x=block]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_489a2fe4">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_clear_c5a409ae">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_569e1ab0"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool clear[x=block]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_569e1ab0">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_handempty_0dcd9731">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_e1c91c32"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool handempty[x=robot]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_e1c91c32">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_handfull_3da82f2f">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_e39f2933"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool handfull[x=robot]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_e39f2933">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_holding_d57bb5d3">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#blocksworld_x_b7bb2ea8"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool holding[x=block]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_x_b7bb2ea8">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_pick-up_2d32a2b7">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#blocksworld_pick-up_params_5049a379"/>
+  <hasEffect rdf:resource="#actioneffect1"/>
+  <hasEffect rdf:resource="#actioneffect2"/>
+  <hasEffect rdf:resource="#actioneffect3"/>
+  <hasEffect rdf:resource="#actioneffect4"/>
+  <hasEffect rdf:resource="#actioneffect5"/>
+  <hasPrecondition rdf:resource="#blocksworld_blocksworld_pick-up_2d32a2b7_89f245a4_precondition"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">pick-up</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_pick-up_params_5049a379">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action pick-up(block x, robot robot) {
+    preconditions = [
+      (clear(x) and ontable(x) and handempty(robot))
+    ]
+    effects = [
+      ontable(x) := false
+      clear(x) := false
+      handempty(robot) := false
+      handfull(robot) := true
+      holding(x) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">pick-up_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect1">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_ontable_80481c70"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">ontable(x) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect1">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect1"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">ontable(x) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect2">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">clear(x) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect2">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect2"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect3">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">handempty(robot) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect3">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect3"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect4">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">handfull(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect4">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect4"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect5">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">holding(x) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect5">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect5"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_blocksworld_pick-up_2d32a2b7_89f245a4_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and1"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(clear(x) and ontable(x) and handempty(robot))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and1">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula3"/>
+  <hasArgument rdf:resource="#atomicformula1"/>
+  <hasArgument rdf:resource="#atomicformula2"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula1">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula2">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_ontable_80481c70"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">ontable(x)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula3">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_put-down_6cedce07">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#blocksworld_put-down_params_5006a98d"/>
+  <hasEffect rdf:resource="#actioneffect6"/>
+  <hasEffect rdf:resource="#actioneffect7"/>
+  <hasEffect rdf:resource="#actioneffect8"/>
+  <hasEffect rdf:resource="#actioneffect9"/>
+  <hasEffect rdf:resource="#actioneffect10"/>
+  <hasPrecondition rdf:resource="#blocksworld_blocksworld_put-down_6cedce07_48e6acb2_precondition"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">put-down</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_put-down_params_5006a98d">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action put-down(block x, robot robot) {
+    preconditions = [
+      (holding(x) and handfull(robot))
+    ]
+    effects = [
+      holding(x) := false
+      clear(x) := true
+      handempty(robot) := true
+      handfull(robot) := false
+      ontable(x) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">put-down_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect6">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">holding(x) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect6">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect6"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect7">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">clear(x) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect7">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect7"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect8">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">handempty(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect8">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect8"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect9">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">handfull(robot) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect9">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect9"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect10">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_ontable_80481c70"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">ontable(x) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect10">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect10"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">ontable(x) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_blocksworld_put-down_6cedce07_48e6acb2_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and2"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(holding(x) and handfull(robot))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and2">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula4"/>
+  <hasArgument rdf:resource="#atomicformula5"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula4">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula5">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_stack_247123d9">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#blocksworld_stack_params_2d504a8a"/>
+  <hasEffect rdf:resource="#actioneffect11"/>
+  <hasEffect rdf:resource="#actioneffect12"/>
+  <hasEffect rdf:resource="#actioneffect13"/>
+  <hasEffect rdf:resource="#actioneffect14"/>
+  <hasEffect rdf:resource="#actioneffect15"/>
+  <hasEffect rdf:resource="#actioneffect16"/>
+  <hasPrecondition rdf:resource="#blocksworld_blocksworld_stack_247123d9_d18731f2_precondition"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">stack</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_stack_params_2d504a8a">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action stack(block x, block y, robot robot) {
+    preconditions = [
+      (holding(x) and clear(y) and handfull(robot))
+    ]
+    effects = [
+      holding(x) := false
+      clear(y) := false
+      clear(x) := true
+      handempty(robot) := true
+      handfull(robot) := false
+      on(x, y) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">stack_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect11">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">holding(x) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect11">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect11"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect12">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">clear(y) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect12">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect12"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(y) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect13">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">clear(x) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect13">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect13"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect14">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">handempty(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect14">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect14"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect15">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">handfull(robot) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect15">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect15"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect16">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_on_dfa21d84"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">on(x, y) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect16">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect16"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(x, y) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_blocksworld_stack_247123d9_d18731f2_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and3"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(holding(x) and clear(y) and handfull(robot))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and3">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula8"/>
+  <hasArgument rdf:resource="#atomicformula6"/>
+  <hasArgument rdf:resource="#atomicformula7"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula6">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula7">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(y)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula8">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_unstack_49d9faf3">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#blocksworld_unstack_params_1450c7d9"/>
+  <hasEffect rdf:resource="#actioneffect17"/>
+  <hasEffect rdf:resource="#actioneffect18"/>
+  <hasEffect rdf:resource="#actioneffect19"/>
+  <hasEffect rdf:resource="#actioneffect20"/>
+  <hasEffect rdf:resource="#actioneffect21"/>
+  <hasEffect rdf:resource="#actioneffect22"/>
+  <hasPrecondition rdf:resource="#blocksworld_blocksworld_unstack_49d9faf3_bf3ae65a_precondition"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">unstack</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_unstack_params_1450c7d9">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#block"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action unstack(block x, block y, robot robot) {
+    preconditions = [
+      (on(x, y) and clear(x) and handempty(robot))
+    ]
+    effects = [
+      holding(x) := true
+      clear(y) := true
+      clear(x) := false
+      handempty(robot) := false
+      handfull(robot) := true
+      on(x, y) := false
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">unstack_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect17">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_holding_d57bb5d3"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">holding(x) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect17">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect17"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">holding(x) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect18">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">clear(y) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect18">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect18"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(y) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect19">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">clear(x) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect19">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect19"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect20">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">handempty(robot) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect20">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect20"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect21">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_handfull_3da82f2f"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">handfull(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect21">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect21"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handfull(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect22">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#blocksworld_on_dfa21d84"/>
+  <hasArgument rdf:resource="#block"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">on(x, y) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect22">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect22"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(x, y) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#blocksworld_blocksworld_unstack_49d9faf3_bf3ae65a_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and4"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(on(x, y) and clear(x) and handempty(robot))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and4">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula10"/>
+  <hasArgument rdf:resource="#atomicformula11"/>
+  <hasArgument rdf:resource="#atomicformula9"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula9">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_on_dfa21d84"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(x, y)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula10">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_clear_c5a409ae"/>
+  <hasArgument rdf:resource="#block"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(x)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula11">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#blocksworld_handempty_0dcd9731"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#blocksworld"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">handempty(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi">
+  <rdf:type rdf:resource="#PlanningDomain"/>
+  <hasRequirement rdf:resource="#strips"/>
+  <hasPredicate rdf:resource="#hanoi_clear_ea33885a"/>
+  <hasPredicate rdf:resource="#hanoi_on_16a8057d"/>
+  <hasPredicate rdf:resource="#hanoi_smaller_d9a8004c"/>
+  <hasAction rdf:resource="#hanoi_move_3f344377"/>
+  <hasGeneralDomainDescription xml:lang="en">put disks on top of each other according to size</hasGeneralDomainDescription>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_clear_ea33885a">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_3c2c8254"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool clear[x=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_3c2c8254">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_on_16a8057d">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_76241d1f"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_y_4604f851"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool on[x=object, y=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_76241d1f">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_y_4604f851">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_smaller_d9a8004c">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_73394806"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_y_75503683"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool smaller[x=object, y=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_73394806">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_y_75503683">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_move_3f344377">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#hanoi_move_params_eac0c2ba"/>
+  <hasEffect rdf:resource="#actioneffect23"/>
+  <hasEffect rdf:resource="#actioneffect24"/>
+  <hasEffect rdf:resource="#actioneffect25"/>
+  <hasEffect rdf:resource="#actioneffect26"/>
+  <hasPrecondition rdf:resource="#hanoi_hanoi_move_3f344377_1f4364d6_precondition"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">move</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_move_params_eac0c2ba">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action move(object disc, object from, object to) {
+    preconditions = [
+      (smaller(disc, to) and on(disc, from) and clear(disc) and clear(to))
+    ]
+    effects = [
+      clear(from) := true
+      on(disc, to) := true
+      on(disc, from) := false
+      clear(to) := false
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">move_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect23">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_clear_ea33885a"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">clear(from) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect23">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect23"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(from) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect24">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_on_16a8057d"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">on(disc, to) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect24">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect24"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(disc, to) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect25">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_on_16a8057d"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">on(disc, from) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect25">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect25"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(disc, from) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect26">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_clear_ea33885a"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">clear(to) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect26">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect26"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(to) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_hanoi_move_3f344377_1f4364d6_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and5"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(smaller(disc, to) and on(disc, from) and clear(disc) and clear(to))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and5">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula14"/>
+  <hasArgument rdf:resource="#atomicformula12"/>
+  <hasArgument rdf:resource="#atomicformula15"/>
+  <hasArgument rdf:resource="#atomicformula13"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula12">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_smaller_d9a8004c"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">smaller(disc, to)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula13">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_on_16a8057d"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(disc, from)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula14">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_clear_ea33885a"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(disc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula15">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_clear_ea33885a"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">clear(to)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement">
+  <rdf:type rdf:resource="#PlanningDomain"/>
+  <hasRequirement rdf:resource="#strips"/>
+  <hasPredicate rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasPredicate rdf:resource="#object_arrangement_on_a6d838da"/>
+  <hasPredicate rdf:resource="#object_arrangement_in_1e338cd6"/>
+  <hasAction rdf:resource="#object_arrangement_move_3d2e7a90"/>
+  <hasAction rdf:resource="#object_arrangement_pick_94a747de"/>
+  <hasAction rdf:resource="#object_arrangement_place_on_table_d2a3094e"/>
+  <hasAction rdf:resource="#object_arrangement_remove_from_table_e04e8cec"/>
+  <hasAction rdf:resource="#object_arrangement_put_on_plate_4718fbc9"/>
+  <hasAction rdf:resource="#object_arrangement_put_in_container_77a43f23"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_free_0d6d4a69">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj_e4d73c81"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool free[obj=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj_e4d73c81">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_at_1f608488">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj_9ee6f0c2"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_loc_a462a1ee"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool at[obj=object, loc=location - object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj_9ee6f0c2">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_loc_a462a1ee">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_on_a6d838da">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj1_a70750f0"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj2_14351abb"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool on[obj1=food - object, obj2=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj1_a70750f0">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#food"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj2_14351abb">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_in_1e338cd6">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj1_c4d0718a"/>
+  <hasDomainPredicateParameter rdf:resource="#object_arrangement_obj2_a500a4ca"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">bool in[obj1=food - object, obj2=container - object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj1_c4d0718a">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#food"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_obj2_a500a4ca">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#container"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_move_3d2e7a90">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_move_params_85e05c0a"/>
+  <hasEffect rdf:resource="#actioneffect27"/>
+  <hasEffect rdf:resource="#actioneffect28"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_move_3d2e7a90_f4c64c0a_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">move</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_move_params_85e05c0a">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action move(robot - object robot, location - object loc1, location - object loc2) {
+    preconditions = [
+      at(robot, loc1)
+    ]
+    effects = [
+      at(robot, loc1) := false
+      at(robot, loc1) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">move_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect27">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">at(robot, loc1) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect27">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect27"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc1) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect28">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">at(robot, loc1) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect28">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect28"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc1) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_move_3d2e7a90_f4c64c0a_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#atomicformula16"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc1)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula16">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc1)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_pick_94a747de">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_pick_params_2dbb6a06"/>
+  <hasEffect rdf:resource="#actioneffect29"/>
+  <hasEffect rdf:resource="#actioneffect30"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_pick_94a747de_f37addba_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">pick</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_pick_params_2dbb6a06">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#object"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action pick(robot - object robot, object obj, location - object loc) {
+    preconditions = [
+      (free(robot) and free(obj) and at(obj, loc) and at(robot, loc))
+    ]
+    effects = [
+      free(robot) := false
+      at(obj, loc) := false
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">pick_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect29">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">free(robot) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect29">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect29"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect30">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#object"/>
+  <hasArgument rdf:resource="#location"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">at(obj, loc) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect30">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect30"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj, loc) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_pick_94a747de_f37addba_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and6"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(free(robot) and free(obj) and at(obj, loc) and at(robot, loc))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and6">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula19"/>
+  <hasArgument rdf:resource="#atomicformula17"/>
+  <hasArgument rdf:resource="#atomicformula18"/>
+  <hasArgument rdf:resource="#atomicformula20"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula17">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula18">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(obj)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula19">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#object"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula20">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_place_on_table_d2a3094e">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_place_on_table_params_cda7daf6"/>
+  <hasEffect rdf:resource="#actioneffect31"/>
+  <hasEffect rdf:resource="#actioneffect32"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_place_on_table_d2a3094e_6face421_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">place_on_table</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_place_on_table_params_cda7daf6">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#object"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action place_on_table(robot - object robot, object obj, location - object loc) {
+    preconditions = [
+      ((not free(robot)) and at(robot, loc))
+    ]
+    effects = [
+      free(robot) := true
+      at(obj, loc) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">place_on_table_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect31">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect31">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect31"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect32">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#object"/>
+  <hasArgument rdf:resource="#location"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">at(obj, loc) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect32">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect32"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj, loc) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_place_on_table_d2a3094e_6face421_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and7"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">((not free(robot)) and at(robot, loc))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and7">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula22"/>
+  <hasArgument rdf:resource="#not1"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#not1">
+  <rdf:type rdf:resource="#Not"/>
+  <hasArgument rdf:resource="#atomicformula21"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula21">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula22">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_remove_from_table_e04e8cec">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_remove_from_table_params_322b0b9c"/>
+  <hasEffect rdf:resource="#actioneffect33"/>
+  <hasEffect rdf:resource="#actioneffect34"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_remove_from_table_e04e8cec_6b691c27_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">remove_from_table</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_remove_from_table_params_322b0b9c">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#object"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action remove_from_table(robot - object robot, object obj, location - object loc) {
+    preconditions = [
+      ((not free(robot)) and at(robot, loc))
+    ]
+    effects = [
+      free(robot) := true
+      at(obj, loc) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">remove_from_table_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect33">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect33">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect33"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect34">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#object"/>
+  <hasArgument rdf:resource="#location"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">at(obj, loc) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect34">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect34"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj, loc) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_remove_from_table_e04e8cec_6b691c27_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and8"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">((not free(robot)) and at(robot, loc))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and8">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula24"/>
+  <hasArgument rdf:resource="#not2"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#not2">
+  <rdf:type rdf:resource="#Not"/>
+  <hasArgument rdf:resource="#atomicformula23"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula23">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula24">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_put_on_plate_4718fbc9">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_put_on_plate_params_43e7afcb"/>
+  <hasEffect rdf:resource="#actioneffect35"/>
+  <hasEffect rdf:resource="#actioneffect36"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_put_on_plate_4718fbc9_276725fd_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">put_on_plate</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_put_on_plate_params_43e7afcb">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#food"/>
+  <hasParameterType rdf:resource="#plate"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action put_on_plate(robot - object robot, food - object obj1, plate - object obj2, location - object loc) {
+    preconditions = [
+      (at(obj2, loc) and at(robot, loc))
+    ]
+    effects = [
+      free(robot) := true
+      on(obj1, obj2) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">put_on_plate_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect35">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect35">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect35"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect36">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_on_a6d838da"/>
+  <hasArgument rdf:resource="#plate"/>
+  <hasArgument rdf:resource="#food"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">on(obj1, obj2) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect36">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect36"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(obj1, obj2) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_put_on_plate_4718fbc9_276725fd_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and9"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(at(obj2, loc) and at(robot, loc))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and9">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula26"/>
+  <hasArgument rdf:resource="#atomicformula25"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula25">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#plate"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj2, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula26">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_put_in_container_77a43f23">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#object_arrangement_put_in_container_params_25e090f9"/>
+  <hasEffect rdf:resource="#actioneffect37"/>
+  <hasEffect rdf:resource="#actioneffect38"/>
+  <hasPrecondition rdf:resource="#object_arrangement_object_arrangement_put_in_container_77a43f23_1da03a55_precondition"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">put_in_container</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_put_in_container_params_25e090f9">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#robot"/>
+  <hasParameterType rdf:resource="#food"/>
+  <hasParameterType rdf:resource="#container"/>
+  <hasParameterType rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <hasSyntax xml:lang="en">action put_in_container(robot - object robot, food - object obj1, container - object obj2, location - object loc) {
+    preconditions = [
+      (at(obj2, loc) and at(robot, loc))
+    ]
+    effects = [
+      free(robot) := true
+      on(obj1, obj2) := true
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">put_in_container_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect37">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_free_0d6d4a69"/>
+  <hasArgument rdf:resource="#robot"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect37">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect37"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">free(robot) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect38">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#object_arrangement_on_a6d838da"/>
+  <hasArgument rdf:resource="#container"/>
+  <hasArgument rdf:resource="#food"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">on(obj1, obj2) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect38">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect38"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">on(obj1, obj2) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#object_arrangement_object_arrangement_put_in_container_77a43f23_1da03a55_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and10"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">(at(obj2, loc) and at(robot, loc))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and10">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula27"/>
+  <hasArgument rdf:resource="#atomicformula28"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula27">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#container"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(obj2, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula28">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#object_arrangement_at_1f608488"/>
+  <hasArgument rdf:resource="#robot"/>
+  <hasArgument rdf:resource="#location"/>
+  <belongsToDomain rdf:resource="#object_arrangement"/>
+  <rdfs:label xml:lang="en">at(robot, loc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/object-arrangement_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#And"/>
+    <rdf:Description rdf:about="#Not"/>
+    <rdf:Description rdf:about="#Or"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>

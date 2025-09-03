@@ -1,0 +1,671 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://purl.org/ai4s/ontology/planning"
+         xmlns="https://purl.org/ai4s/ontology/planning#"
+         xmlns:term="http://purl.org/dc/terms/">
+
+<owl:Ontology rdf:about="https://purl.org/ai4s/ontology/planning">
+  <owl:versionIRI rdf:resource="https://purl.org/ai4s/ontology/planning/v2.0"/>
+  <term:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bharath Muppasani, Vishal Pallagani, Biplav Srivastava, Raghava Mutharaju</term:contributor>
+  <term:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bharath Muppasani</term:creator>
+  <term:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology represents the knowledge about automated planning domain. It captures the characteristics, features, and performance of different planners and domains, as well as the relationships between them. The ontology can be used to select suitable planners for a given domain and to improve their performance. The ontology aims to facilitate automated planning research and applications.</term:description>
+  <term:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</term:language>
+  <term:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://creativecommons.org/licenses/by/4.0/legalcode</term:license>
+  <term:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontology to model Automated Planning domain</term:title>
+  <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://github.com/BharathMuppasani/AI-Planning-Ontology</rdfs:seeAlso>
+  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</owl:versionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#addsPredicate">
+  <rdfs:domain rdf:resource="#ActionEffect"/>
+  <rdfs:range rdf:resource="#State"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an effect to a state that adds a predicate to it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#assignsFluent"/>
+
+<owl:ObjectProperty rdf:about="#belongsToAction">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provenance property to mark which domain the individuals belong to</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#belongsToDomain">
+  <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:range rdf:resource="#PlanningDomain"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provenance function to mark which domain the individuals belong to</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#deletesPredicate">
+  <rdfs:domain rdf:resource="#ActionEffect"/>
+  <rdfs:range rdf:resource="#State"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an effect to a state that deletes a predicate from it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAction">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainAction"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain action that is available in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasArgument">
+  <rdfs:domain rdf:resource="#FormulaNode"/>
+  <rdfs:range rdf:resource="#FormulaNode"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasConstant">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainConstant"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain constant that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateName">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateParameter">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDomainPredicateType">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasEffect">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionEffect"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action effect that results from it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasExtractedAction">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#MacroAction"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to an action that is extracted from its plan</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasGoalState">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#GoalState"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a goal state that is desired for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasHighRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a high relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasInitialState">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#InitialState"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to an initial state that is given for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLowRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a low relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMediumRelevancePlanner">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planner that has a medium relevance score for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasObject">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#ProblemObject"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a problem object that is involved in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasParameter">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionParameter"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action parameter that is involved in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasParameterType"/>
+
+<owl:ObjectProperty rdf:about="#hasPlan">
+  <rdfs:domain rdf:resource="#PlanningProblem"/>
+  <rdfs:range rdf:resource="#Plan"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning problem to a plan that solves it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPrecondition">
+  <rdfs:domain rdf:resource="#DomainAction"/>
+  <rdfs:range rdf:resource="#ActionPrecondition"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action to an action precondition that is required for it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPredicate">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainPredicate"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a domain predicate that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasProblem">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#PlanningProblem"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a planning problem that is defined in it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRequirement">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#DomainRequirement"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain or problem to a domain requirement that is required or supported by it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRootNode">
+  <rdfs:range rdf:resource="#FormulaNode"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTag">
+  <rdfs:domain rdf:resource="#Type"/>
+  <rdfs:range rdf:resource="#TypeTag"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a type to a type tag that labels it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasType">
+  <rdfs:domain rdf:resource="#PlanningDomain"/>
+  <rdfs:range rdf:resource="#Type"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planning domain to a type</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTypeInstance">
+  <rdfs:domain rdf:resource="#Type"/>
+  <rdfs:range rdf:resource="#ProblemObject"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a type to a problem object that is an instance of it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isGeneratedBy">
+  <rdfs:domain rdf:resource="#Plan"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a plan to a planner that generates it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofPlannerType">
+  <rdfs:domain rdf:resource="#Planner"/>
+  <rdfs:range rdf:resource="#PlannerType"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a planner to a planner type that categorizes it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofType">
+  <rdfs:domain rdf:resource="#ActionParameter"/>
+  <rdfs:range rdf:resource="#Type"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates an action parameter to a type that classifies it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#refersToPredicate">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#solvedBy">
+  <owl:inverseOf rdf:resource="#solvesRequirement"/>
+  <rdfs:domain rdf:resource="#DomainRequirement"/>
+  <rdfs:range rdf:resource="#Planner"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a property that relates a domain requirement to a planner that solves it</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#solvesRequirement">
+  <rdfs:domain rdf:resource="#Planner"/>
+  <rdfs:range rdf:resource="#DomainRequirement"/>
+  <rdfs:comment xml:lang="en">a property that relates a planner to a domain requirement that it can handle or satisfy</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#assignsValue">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Holds the value assignment of an effect</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasArgumentIndex">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPlanCost">
+  <rdfs:domain rdf:resource="#Plan"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPredicateParameterIndex">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSyntax">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utility data property to preserve syntax</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+
+<owl:AnnotationProperty rdf:about="#Authors"/>
+
+<owl:Class rdf:about="#ActionEffect">
+  <rdfs:comment xml:lang="en">a class that represents what happens after an action is done</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#State">
+  <rdfs:comment xml:lang="en">represents a situation or a configuration of the world in a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanningDomain">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAction"/>
+      <owl:someValuesFrom rdf:resource="#DomainAction"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasPredicate"/>
+      <owl:someValuesFrom rdf:resource="#DomainPredicate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRequirement"/>
+      <owl:someValuesFrom rdf:resource="#DomainRequirement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a class that represents a problem setting for automated planning</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainAction">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasEffect"/>
+      <owl:someValuesFrom rdf:resource="#ActionEffect"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a class that represents a type of action that can be performed in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#FormulaNode">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abstract class, not instantiated directly</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainConstant">
+  <rdfs:comment xml:lang="en">represents a fixed entity in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MacroAction">
+  <rdfs:subClassOf rdf:resource="#DomainAction"/>
+  <rdfs:comment xml:lang="en">Extracted macro action, which is a combination of multiple actions of a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanningProblem">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasGoalState"/>
+      <owl:someValuesFrom rdf:resource="#GoalState"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasInitialState"/>
+      <owl:someValuesFrom rdf:resource="#InitialState"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasObject"/>
+      <owl:someValuesFrom rdf:resource="#ProblemObject"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">represents a task of the planning domain that requires a plan to be solved</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#GoalState">
+  <rdfs:subClassOf rdf:resource="#State"/>
+  <rdfs:comment xml:lang="en">represents a desired or a target state defined in a task that a plan should achieve</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Planner">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#ofPlannerType"/>
+      <owl:someValuesFrom rdf:resource="#PlannerType"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#solvesRequirement"/>
+      <owl:someValuesFrom rdf:resource="#DomainRequirement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment xml:lang="en">a system that can generate plans for a given planning domain and problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#InitialState">
+  <rdfs:subClassOf rdf:resource="#State"/>
+  <rdfs:comment xml:lang="en">represents the starting or the given state of a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ProblemObject">
+  <rdfs:comment xml:lang="en">represents an entity or a constant that is involved in a planning problem</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionParameter">
+  <rdfs:comment xml:lang="en">a class that represents what is involved in an action</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Plan">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasPlanCost"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionPrecondition">
+  <rdfs:comment xml:lang="en">a class that represents what needs to be true before an action can be done</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicate">
+  <rdfs:comment xml:lang="en">a class that represents a condition or a fact that can be true or false in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainRequirement">
+  <rdfs:comment xml:lang="en">A feature that a planning domain requires or supports</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Type">
+  <rdfs:subClassOf rdf:resource="#TypeTag"/>
+  <rdfs:comment xml:lang="en">represents a kind of entity in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TypeTag">
+  <rdfs:comment xml:lang="en">represents a label that can be assigned to a type in a planning domain</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlannerType">
+  <rdfs:comment xml:lang="en">a category or classification of planners based on their characteristics or features</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#And">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LogicalConnective">
+  <rdfs:subClassOf rdf:resource="#FormulaNode"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The class represents logical connectives like 'and', 'or' and 'not'.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AssignmentEffect"/>
+
+<owl:Class rdf:about="#AtomicFormula">
+  <rdfs:subClassOf rdf:resource="#FormulaNode"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Represents a single predicate applied to terms</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicateParameter">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Used as a helper - a parameter to a domain predicate</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainPredicateType">
+  <rdfs:subClassOf rdf:resource="#TypeTag"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Not">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Or">
+  <rdfs:subClassOf rdf:resource="#LogicalConnective"/>
+</owl:Class>
+
+<owl:Class rdf:about="#object">
+  <rdfs:subClassOf rdf:resource="#Type"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#hanoi">
+  <rdf:type rdf:resource="#PlanningDomain"/>
+  <hasRequirement rdf:resource="#strips"/>
+  <hasPredicate rdf:resource="#hanoi_clear_f767fa1b"/>
+  <hasPredicate rdf:resource="#hanoi_on_9bd8d997"/>
+  <hasPredicate rdf:resource="#hanoi_smaller_700b24da"/>
+  <hasAction rdf:resource="#hanoi_move_2381946f"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#strips">
+  <rdf:type rdf:resource="#DomainRequirement"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_clear_f767fa1b">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_1af26669"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">bool clear[x=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bool">
+  <rdf:type rdf:resource="#DomainPredicateType"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_1af26669">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_on_9bd8d997">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_c4354fb3"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_y_841cc164"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">bool on[x=object, y=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_c4354fb3">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_y_841cc164">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_smaller_700b24da">
+  <rdf:type rdf:resource="#DomainPredicate"/>
+  <hasDomainPredicateType rdf:resource="#bool"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_x_67def838"/>
+  <hasDomainPredicateParameter rdf:resource="#hanoi_y_eca97c7d"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">bool smaller[x=object, y=object]</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_x_67def838">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_y_eca97c7d">
+  <rdf:type rdf:resource="#DomainPredicateParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_move_2381946f">
+  <rdf:type rdf:resource="#DomainAction"/>
+  <hasParameter rdf:resource="#hanoi_move_params_328f475a"/>
+  <hasEffect rdf:resource="#actioneffect1"/>
+  <hasEffect rdf:resource="#actioneffect2"/>
+  <hasEffect rdf:resource="#actioneffect3"/>
+  <hasEffect rdf:resource="#actioneffect4"/>
+  <hasPrecondition rdf:resource="#hanoi_hanoi_move_2381946f_7cbb159a_precondition"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">move</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_move_params_328f475a">
+  <rdf:type rdf:resource="#ActionParameter"/>
+  <hasParameterType rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <hasSyntax xml:lang="en">action move(object disc, object from, object to) {
+    preconditions = [
+      (smaller(disc, to) and on(disc, from) and clear(disc) and clear(to))
+    ]
+    effects = [
+      clear(from) := true
+      on(disc, to) := true
+      on(disc, from) := false
+      clear(to) := false
+    ]
+  }</hasSyntax>
+  <rdfs:label xml:lang="en">move_params</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect1">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_clear_f767fa1b"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">clear(from) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect1">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect1"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">clear(from) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect2">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_on_9bd8d997"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</assignsValue>
+  <rdfs:label xml:lang="en">on(disc, to) := true</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect2">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect2"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">on(disc, to) := true</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect3">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_on_9bd8d997"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">on(disc, from) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect3">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect3"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">on(disc, from) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#assignmenteffect4">
+  <rdf:type rdf:resource="#AssignmentEffect"/>
+  <assignsFluent rdf:resource="#hanoi_clear_f767fa1b"/>
+  <hasArgument rdf:resource="#object"/>
+  <assignsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</assignsValue>
+  <rdfs:label xml:lang="en">clear(to) := false</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#actioneffect4">
+  <rdf:type rdf:resource="#ActionEffect"/>
+  <hasRootNode rdf:resource="#assignmenteffect4"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">clear(to) := false</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hanoi_hanoi_move_2381946f_7cbb159a_precondition">
+  <rdf:type rdf:resource="#ActionPrecondition"/>
+  <hasRootNode rdf:resource="#and1"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">(smaller(disc, to) and on(disc, from) and clear(disc) and clear(to))</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#and1">
+  <rdf:type rdf:resource="#And"/>
+  <hasArgument rdf:resource="#atomicformula4"/>
+  <hasArgument rdf:resource="#atomicformula2"/>
+  <hasArgument rdf:resource="#atomicformula1"/>
+  <hasArgument rdf:resource="#atomicformula3"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula1">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_smaller_700b24da"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">smaller(disc, to)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula2">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_on_9bd8d997"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">on(disc, from)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula3">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_clear_f767fa1b"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">clear(disc)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#atomicformula4">
+  <rdf:type rdf:resource="#AtomicFormula"/>
+  <refersToPredicate rdf:resource="#hanoi_clear_f767fa1b"/>
+  <hasArgument rdf:resource="#object"/>
+  <belongsToDomain rdf:resource="#hanoi"/>
+  <rdfs:label xml:lang="en">clear(to)</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created from file: test/domains/input_domains/hanoi_domain.pddl</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#And"/>
+    <rdf:Description rdf:about="#Not"/>
+    <rdf:Description rdf:about="#Or"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>

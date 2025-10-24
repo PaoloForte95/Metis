@@ -1,0 +1,3 @@
+[submodule "pddl-instances"]
+	path = pddl-instances
+	url = https://github.com/potassco/pddl-instances.git

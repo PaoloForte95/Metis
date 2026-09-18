@@ -1,3 +1,6 @@
 [submodule "pddl-instances"]
 	path = pddl-instances
 	url = https://github.com/potassco/pddl-instances.git
+[submodule "robotnet"]
+	path = robotnet
+	url = https://github.com/Dorteel/robotnet.git
